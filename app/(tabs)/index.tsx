@@ -8,71 +8,39 @@ import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native';
 import { useForm } from 'react-hook-form';
+import  YouTubeForm from '../../components/YoutubeForm';
 
-export default function HomeScreen() {
+const HomeScreen: React.FC = () => {
+    const onSubmitYouTubeForm = (data: { URL: string }) => {
+        console.log(data);
+        // Future API call to process the URL can be made here
+    };
 
-  const [counterState, setCounterState] = useState(0);
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
-
-  const onSubmit = (data: any) => console.log(data)
-
-  console.log(watch("example")) // watch input value by passing the name of it
-
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome to Video2Recipe</ThemedText>
-      </ThemedView>
-      <ThemedText>
-        This app includes example code to help you get started.
-      </ThemedText>
-      <ThemedView style={styles.stepContainer}>
-
-        <ThemedText>Step 1: Enter your Youtube Video Link:</ThemedText>
-        <ThemedText>Alternative could be to search and input from youtube </ThemedText>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("URL", {maxLength: 300, pattern: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/i })} />
-          <input type="submit" />
-        </form>
-        
-        <ThemedText>{counterState}</ThemedText>
-        <Button title="Increment" onPress={() => setCounterState(counterState + 1)} />
-
-      </ThemedView>
-    </ParallaxScrollView>
-  );
-}
+    return (
+        <ParallaxScrollView
+          headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+          headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
+            <ThemedView style={styles.titleContainer}>
+                <ThemedText type="title">Welcome to Video2Recipe</ThemedText>
+            </ThemedView>
+            <YouTubeForm onSubmit={onSubmitYouTubeForm} />
+         
+        </ParallaxScrollView>
+    );
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+    },
+    headerImage: {
+        color: '#808080',
+        bottom: -90,
+        left: -35,
+        position: 'absolute',
+    },
 });
 
+export default HomeScreen;
