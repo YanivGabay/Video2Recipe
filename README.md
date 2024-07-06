@@ -1,4 +1,10 @@
-# Welcome to your Expo app 👋
+# Welcome Video 2 Recipe
+
+the original goal, was an application to help my mom get the recipes from english cooking videos.
+
+the current goal, is to use the Transcript API to get the transcript from the video, auto generated or original, and then use the transcript, process it using Generative AI, as well as translation API, to get the recipe in the desired language.
+
+
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
