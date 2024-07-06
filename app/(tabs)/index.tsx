@@ -36,17 +36,10 @@ export default function HomeScreen() {
       </ThemedText>
       <ThemedView style={styles.stepContainer}>
 
-        <ThemedText>Step 1: Create a new recipe</ThemedText>
-
+        <ThemedText>Step 1: Enter your Youtube Video Link:</ThemedText>
+        <ThemedText>Alternative could be to search and input from youtube </ThemedText>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* register your input into the hook by invoking the "register" function */}
-          <input defaultValue="test" {...register("example")} />
-
-          {/* include validation with required or other standard HTML validation rules */}
-          <input {...register("exampleRequired", { required: true })} />
-          {/* errors will return when field validation fails  */}
-          {errors.exampleRequired && <span>This field is required</span>}
-
+          <input {...register("URL", {maxLength: 300, pattern: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/i })} />
           <input type="submit" />
         </form>
         
